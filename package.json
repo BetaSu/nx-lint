@@ -1,6 +1,6 @@
 {
-  "name": "nx-lint",
-  "version": "0.1.0",
+  "name": "@beta_su/nx-lint",
+  "version": "0.1.1",
   "description": "Independent Nx workspace policy runner with Conformance-compatible interfaces",
   "license": "MIT",
   "repository": {

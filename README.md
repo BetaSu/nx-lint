@@ -1,6 +1,6 @@
 # Nx Lint
 
-Nx 原生命令先查找 `@nx/powerpack-conformance`，再查找 `@nx/conformance`。将两个名称设为 `nx-lint` 的 npm 别名，原生命令和本地规则就会使用同一份运行器。
+Nx 原生命令先查找 `@nx/powerpack-conformance`，再查找 `@nx/conformance`。将两个名称设为 `@beta_su/nx-lint` 的 npm 别名，原生命令和本地规则就会使用同一份运行器。
 
 ## 安装
 
@@ -8,9 +8,9 @@ Nx 原生命令先查找 `@nx/powerpack-conformance`，再查找 `@nx/conformanc
 
 ```json
 {
-  "nx-lint": "0.1.0",
-  "@nx/conformance": "npm:nx-lint@0.1.0",
-  "@nx/powerpack-conformance": "npm:nx-lint@0.1.0"
+  "@beta_su/nx-lint": "0.1.1",
+  "@nx/conformance": "npm:@beta_su/nx-lint@0.1.1",
+  "@nx/powerpack-conformance": "npm:@beta_su/nx-lint@0.1.1"
 }
 ```
 
@@ -18,8 +18,8 @@ Nx 原生命令先查找 `@nx/powerpack-conformance`，再查找 `@nx/conformanc
 
 ```yaml
 overrides:
-  "@nx/conformance": "npm:nx-lint@0.1.0"
-  "@nx/powerpack-conformance": "npm:nx-lint@0.1.0"
+  "@nx/conformance": "npm:@beta_su/nx-lint@0.1.1"
+  "@nx/powerpack-conformance": "npm:@beta_su/nx-lint@0.1.1"
 ```
 
 ## 使用
@@ -32,4 +32,4 @@ pnpm exec nx conformance:check
 pnpm exec nx conformance
 ```
 
-新规则可以直接从 `nx-lint` 导入工厂和类型。自定义执行器从 `nx-lint/conformance-handler` 导入 `conformanceHandler`，执行 `nx-cloud:` 规则时需提供 Cloud adapter。
+新规则可以直接从 `@beta_su/nx-lint` 导入工厂和类型。自定义执行器从 `@beta_su/nx-lint/conformance-handler` 导入 `conformanceHandler`，执行 `nx-cloud:` 规则时需提供 Cloud adapter。

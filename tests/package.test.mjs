@@ -18,7 +18,7 @@ function execute(command, args, cwd, label) {
 
 test('one packed package serves direct imports and the Nx aliases without the source checkout', () => {
   fs.mkdirSync(evidence, { recursive: true });
-  const tarball = path.join(evidence, 'nx-lint-0.1.0.tgz');
+  const tarball = path.join(evidence, 'nx-lint-0.1.1.tgz');
   execute('pnpm', ['--config.ignore-scripts=true', 'pack', '--out', tarball], packageRoot, 'package-main-pack');
   const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'nx-lint-packed-consumer-')));
   try {
@@ -26,20 +26,20 @@ test('one packed package serves direct imports and the Nx aliases without the so
     const packageSpec = 'file:' + tarball;
     const aliases = { '@nx/conformance': packageSpec, '@nx/powerpack-conformance': packageSpec };
     put('package.json', { name: 'packed-consumer', private: true, devDependencies: {
-      'nx-lint': packageSpec,
+      '@beta_su/nx-lint': packageSpec,
       ...aliases,
       nx: '23.3.0', '@nx/devkit': '23.3.0', '@nx/js': '23.3.0',
     } });
     put('pnpm-workspace.yaml', { overrides: aliases });
     put('project.json', { name: 'packed-consumer', metadata: { owners: { '@team': [] } }, targets: {} });
-    put('nx.json', { neverConnectToCloud: true, plugins: ['nx-lint/plugin'], conformance: { rules: [
+    put('nx.json', { neverConnectToCloud: true, plugins: ['@beta_su/nx-lint/plugin'], conformance: { rules: [
       { rule: '@nx/conformance/ensure-owners' },
       { rule: '@nx/conformance/enforce-project-boundaries', options: {} },
       { rule: './rules/direct/index.cjs' },
     ] } });
     fs.mkdirSync(path.join(root, 'rules/direct'), { recursive: true });
     fs.writeFileSync(path.join(root, 'rules/direct/index.cjs'), [
-      "const { createConformanceRule } = require('nx-lint');",
+      "const { createConformanceRule } = require('@beta_su/nx-lint');",
       "module.exports = createConformanceRule({ name: 'direct', category: 'consistency', description: 'Direct package import',",
       "  implementation: async () => ({ severity: 'low', details: { violations: [] } }),",
       "});",
@@ -47,12 +47,12 @@ test('one packed package serves direct imports and the Nx aliases without the so
     put('rules/direct/schema.json', { type: 'object' });
     execute('pnpm', ['install', '--prefer-offline', '--ignore-scripts', '--registry=https://registry.npmjs.org'], root, 'package-consumer-install');
     const fromConsumer = createRequire(path.join(root, 'package.json'));
-    const installed = path.dirname(fromConsumer.resolve('nx-lint/package.json'));
+    const installed = path.dirname(fromConsumer.resolve('@beta_su/nx-lint/package.json'));
     expect(installed.startsWith(packageRoot)).toBe(false);
-    for (const alias of Object.keys(aliases)) expect(fromConsumer(alias)).toBe(fromConsumer('nx-lint'));
-    expect(fromConsumer('nx-lint/conformance')).toBe(fromConsumer('nx-lint'));
-    expect(typeof fromConsumer('nx-lint/conformance-handler').conformanceHandler).toBe('function');
-    const metadata = fromConsumer('nx-lint/package.json');
+    for (const alias of Object.keys(aliases)) expect(fromConsumer(alias)).toBe(fromConsumer('@beta_su/nx-lint'));
+    expect(fromConsumer('@beta_su/nx-lint/conformance')).toBe(fromConsumer('@beta_su/nx-lint'));
+    expect(typeof fromConsumer('@beta_su/nx-lint/conformance-handler').conformanceHandler).toBe('function');
+    const metadata = fromConsumer('@beta_su/nx-lint/package.json');
     for (const descriptor of [metadata.generators, metadata.executors]) {
       const definition = JSON.parse(fs.readFileSync(path.join(installed, descriptor), 'utf8'));
       for (const entry of Object.values(definition.generators ?? definition.executors)) {
@@ -66,13 +66,13 @@ test('one packed package serves direct imports and the Nx aliases without the so
     expect(report.ruleResults).toHaveLength(3);
     expect(report.ruleResults.every((rule) => rule.details.violations.length === 0)).toBe(true);
     execute(process.execPath, [nx, 'generate', '@nx/conformance:create-rule', '--name=from-tarball', '--directory=rules', '--category=consistency', '--interactive=false'], root, 'package-consumer-generate');
-    expect(fs.readFileSync(path.join(root, 'rules/from-tarball/index.ts'), 'utf8')).toContain("from 'nx-lint'");
-    execute(process.execPath, [nx, 'generate', 'nx-lint:create-rule', '--name=native-from-tarball', '--directory=rules', '--category=consistency', '--interactive=false'], root, 'package-consumer-native-generate');
-    expect(fs.readFileSync(path.join(root, 'rules/native-from-tarball/index.ts'), 'utf8')).toContain("from 'nx-lint'");
+    expect(fs.readFileSync(path.join(root, 'rules/from-tarball/index.ts'), 'utf8')).toContain("from '@beta_su/nx-lint'");
+    execute(process.execPath, [nx, 'generate', '@beta_su/nx-lint:create-rule', '--name=native-from-tarball', '--directory=rules', '--category=consistency', '--interactive=false'], root, 'package-consumer-native-generate');
+    expect(fs.readFileSync(path.join(root, 'rules/native-from-tarball/index.ts'), 'utf8')).toContain("from '@beta_su/nx-lint'");
     for (const name of ['ensure-owners', 'enforce-project-boundaries']) {
       const entry = '@nx/conformance/' + name;
       expect(fs.existsSync(path.join(path.dirname(fromConsumer.resolve(entry)), 'schema.json'))).toBe(true);
-      expect(fromConsumer(entry).default).toBe(fromConsumer('nx-lint/' + name));
+      expect(fromConsumer(entry).default).toBe(fromConsumer('@beta_su/nx-lint/' + name));
     }
     for (const command of ['nx-lint', 'conformance', 'conformance-check']) expect(fs.statSync(path.join(installed, 'dist/bin/' + command + '.js')).mode & 0o111).not.toBe(0);
     fs.writeFileSync(path.join(evidence, 'package-acceptance.json'), JSON.stringify({ status: 'passed', installedFromTarball: true, aliases: Object.keys(aliases), rules: report.ruleResults.map((rule) => rule.ruleSpecifier), generatedRule: 'from-tarball', sourceCheckoutRequired: false, executableBins: 3 }, null, 2));

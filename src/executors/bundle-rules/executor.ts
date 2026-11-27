@@ -54,7 +54,7 @@ async function executor(
         platform: "node",
         target: "node18",
         outfile: path.join(target, "index.js"),
-        external: ["nx", "nx/package.json", "@nx/*", "nx-lint"],
+        external: ["nx", "nx/package.json", "@nx/*", "@beta_su/nx-lint"],
         metafile: true,
       });
       const dependencies: Record<string, string> = {};
@@ -63,7 +63,7 @@ async function executor(
           if (!item.external || item.path.startsWith("node:")) continue;
           const name = packageName(item.path);
           if (
-            name === "nx-lint" ||
+            name === "@beta_su/nx-lint" ||
             name === "nx" ||
             name.startsWith("@nx/")
           )

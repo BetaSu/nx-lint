@@ -9,7 +9,7 @@ if (!workspace || !path.isAbsolute(workspace)) throw new Error('Set NX_LINT_INTE
 const packageRoot = path.resolve(__dirname, '..');
 const evidence = path.join(packageRoot, '.acceptance');
 const fromWorkspace = createRequire(path.join(workspace, 'package.json'));
-const installedRoot = path.dirname(fromWorkspace.resolve('nx-lint/package.json'));
+const installedRoot = path.dirname(fromWorkspace.resolve('@beta_su/nx-lint/package.json'));
 assert.equal(fromWorkspace.resolve('@nx/conformance/package.json'), path.join(installedRoot, 'package.json'));
 const summary = { workspace, node: process.version, comparedFiles: 0, officialRules: [], steps: [] };
 function compare(source, installed) {

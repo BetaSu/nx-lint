@@ -11,11 +11,11 @@ const powerpackPackages = new Set([
 
 export function dependencyVersion(name: string, workspaceRoot: string): string {
   const fromWorkspace = createRequire(join(workspaceRoot, "package.json"));
-  if (name === "nx-lint")
+  if (name === "@beta_su/nx-lint")
     return (
       "^" +
       (
-        require("nx-lint/package.json") as { version: string }
+        require("@beta_su/nx-lint/package.json") as { version: string }
       ).version.split(".")[0]
     );
   if (powerpackPackages.has(name)) {

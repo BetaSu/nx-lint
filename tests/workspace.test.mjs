@@ -18,12 +18,12 @@ function put(root, name, value) {
 function workspace() {
   const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'nx-lint-workspace-')));
   roots.push(root);
-  put(root, 'package.json', { name: 'fixture', private: true, devDependencies: { 'nx-lint': 'file:' + packageRoot, nx: '23.3.0', '@nx/js': '23.3.0' } });
+  put(root, 'package.json', { name: 'fixture', private: true, devDependencies: { '@beta_su/nx-lint': 'file:' + packageRoot, nx: '23.3.0', '@nx/js': '23.3.0' } });
   put(root, 'project.json', { name: 'fixture', root: '.', targets: {} });
   put(root, 'tsconfig.base.json', { compilerOptions: { target: 'ES2022', module: 'commonjs', moduleResolution: 'node', esModuleInterop: true, skipLibCheck: true, ignoreDeprecations: '6.0' } });
-  put(root, 'nx.json', { neverConnectToCloud: true, plugins: ['nx-lint/plugin'], conformance: { rules: [{ rule: 'nx-lint/ensure-owners' }] } });
-  fs.mkdirSync(path.join(root, 'node_modules'), { recursive: true });
-  fs.symlinkSync(packageRoot, path.join(root, 'node_modules/nx-lint'), 'dir');
+  put(root, 'nx.json', { neverConnectToCloud: true, plugins: ['@beta_su/nx-lint/plugin'], conformance: { rules: [{ rule: '@beta_su/nx-lint/ensure-owners' }] } });
+  fs.mkdirSync(path.join(root, 'node_modules/@beta_su'), { recursive: true });
+  fs.symlinkSync(packageRoot, path.join(root, 'node_modules/@beta_su/nx-lint'), 'dir');
   for (const name of ['nx', 'typescript']) fs.symlinkSync(path.join(packageRoot, 'node_modules', name), path.join(root, 'node_modules', name), 'dir');
   fs.mkdirSync(path.join(root, 'node_modules/@nx'), { recursive: true });
   for (const name of ['devkit', 'js']) fs.symlinkSync(path.join(packageRoot, 'node_modules/@nx', name), path.join(root, 'node_modules/@nx', name), 'dir');
@@ -32,7 +32,7 @@ function workspace() {
 function aliasConformance(root) {
   fs.symlinkSync(packageRoot, path.join(root, 'node_modules/@nx/conformance'), 'dir');
   const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
-  pkg.devDependencies['@nx/conformance'] = pkg.devDependencies['nx-lint'];
+  pkg.devDependencies['@nx/conformance'] = pkg.devDependencies['@beta_su/nx-lint'];
   put(root, 'package.json', pkg);
 }
 function child(root, executable, args) {
@@ -49,7 +49,7 @@ const config = (root) => JSON.parse(fs.readFileSync(path.join(root, 'nx.json'), 
 test('bundle discovery validates every schema before compilation and uses the installed compatibility version', () => {
   const root = workspace();
   aliasConformance(root);
-  put(root, 'legacy/project.json', { name: 'legacy', targets: { build: { executor: 'nx-lint:bundle-rules', options: { outputPath: 'dist/legacy' } } } });
+  put(root, 'legacy/project.json', { name: 'legacy', targets: { build: { executor: '@beta_su/nx-lint:bundle-rules', options: { outputPath: 'dist/legacy' } } } });
   put(root, 'node_modules/@nx/owners/package.json', { name: '@nx/owners', version: '7.2.0' });
   put(root, 'legacy/src/a/index.ts', "import {createConformanceRule} from '@nx/conformance';import owners from '@nx/owners';import legacyOwners from '@nx/powerpack-owners';export default createConformanceRule({name:'legacy',category:'consistency',description:String(owners)+String(legacyOwners),implementation:async()=>({severity:'low',details:{violations:[]}})});");
   put(root, 'legacy/src/a/schema.json', '{\n// Nx accepts JSONC rule schemas\n"$schema": "", "type": "object",\n}\n');
@@ -95,7 +95,7 @@ test('both official rule specifiers load with their own schemas and enforce thro
   expect(JSON.parse(fs.readFileSync(path.join(root, 'dist/conformance-result.json'), 'utf8')).ruleResults.every((item) => item.details.violations.length === 0)).toBe(true);
   const generated = nx(root, 'generate', '@nx/conformance:create-rule', '--name=official-import', '--directory=rules/src', '--category=security', '--interactive=false');
   expect(generated.code, generated.output).toBe(0);
-  expect(fs.readFileSync(path.join(root, 'rules/src/official-import/index.ts'), 'utf8')).toContain("from 'nx-lint'");
+  expect(fs.readFileSync(path.join(root, 'rules/src/official-import/index.ts'), 'utf8')).toContain("from '@beta_su/nx-lint'");
   expect(JSON.parse(fs.readFileSync(path.join(root, 'rules/src/official-import/schema.json'), 'utf8'))).toMatchObject({ $id: 'official-import', title: 'official-import rule configuration' });
 }, 90000);
 
@@ -106,7 +106,7 @@ test('silent fixes write changes without a second evaluation, and fix generators
   const nxConfig = config(root);
   nxConfig.conformance.rules = [{ rule: './rules/fix/index.cjs' }];
   put(root, 'nx.json', nxConfig);
-  put(root, 'silent.cjs', "require('nx-lint/conformance-handler').conformanceHandler({},'silent').then(code=>{process.exitCode=code;});");
+  put(root, 'silent.cjs', "require('@beta_su/nx-lint/conformance-handler').conformanceHandler({},'silent').then(code=>{process.exitCode=code;});");
   const first = child(root, path.join(root, 'silent.cjs'), []);
   expect(first.code).toBe(1);
   expect(fs.readFileSync(path.join(root, 'fixed.txt'), 'utf8')).toBe('fixed');
@@ -165,7 +165,7 @@ test('the real Nx inferred target enforces an existing built-in rule and reports
 
 test('a newly generated TypeScript rule enforces, fixes, rechecks, bundles and runs from its bundle', () => {
   const root = workspace();
-  const generated = nx(root, 'generate', 'nx-lint:create-rule', '--name=required-marker', '--directory=rules/src', '--category=reliability', '--interactive=false');
+  const generated = nx(root, 'generate', '@beta_su/nx-lint:create-rule', '--name=required-marker', '--directory=rules/src', '--category=reliability', '--interactive=false');
   expect(generated.output).toContain('CREATE');
   expect(generated.code).toBe(0);
   const filename = 'rules/src/required-marker/index.ts';
@@ -186,12 +186,12 @@ test('a newly generated TypeScript rule enforces, fixes, rechecks, bundles and r
   expect(fs.readFileSync(path.join(root, 'required.txt'), 'utf8')).toBe('fixed');
   const report = JSON.parse(fs.readFileSync(path.join(root, 'dist/conformance-result.json'), 'utf8'));
   expect(report.ruleResults[0].runnerData).toMatchObject({ fixGeneratorStatus: 'applied', countOfOriginalViolations: 1, countOfViolationsFixedByGenerator: 1 });
-  put(root, 'rules/project.json', { name: 'rules', targets: { build: { executor: 'nx-lint:bundle-rules', options: { outputPath: 'dist/rules' } } } });
+  put(root, 'rules/project.json', { name: 'rules', targets: { build: { executor: '@beta_su/nx-lint:bundle-rules', options: { outputPath: 'dist/rules' } } } });
   const bundled = nx(root, 'run', 'rules:build');
   expect(bundled.output).toContain('Bundled rule: required-marker');
   expect(bundled.code).toBe(0);
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'dist/rules/required-marker/package.json'), 'utf8'));
-  expect(manifest.dependencies).toEqual({ 'nx-lint': '^0' });
+  expect(manifest.dependencies).toEqual({ '@beta_su/nx-lint': '^0' });
   nxConfig.conformance.rules[0].rule = './dist/rules/required-marker/index.js';
   put(root, 'nx.json', nxConfig);
   fs.unlinkSync(path.join(root, 'required.txt'));
@@ -242,13 +242,13 @@ test('the preset creates a rule project without connecting to Cloud', () => {
   put(root, 'pnpm-workspace.yaml', 'packages:\n  - packages/*\nallowBuilds:\n  esbuild: false\n  nx: false\n');
   put(root, 'apps/existing/index.ts', 'export const app = true;');
   put(root, 'libs/existing/index.ts', 'export const lib = true;');
-  const preset = nx(root, 'generate', 'nx-lint:preset', '--interactive=false');
+  const preset = nx(root, 'generate', '@beta_su/nx-lint:preset', '--interactive=false');
   expect(preset.code, preset.output).toBe(0);
   expect(fs.readFileSync(path.join(root, 'apps/existing/index.ts'), 'utf8')).toBe('export const app = true;');
   expect(fs.readFileSync(path.join(root, 'libs/existing/index.ts'), 'utf8')).toBe('export const lib = true;');
   expect(fs.existsSync(path.join(root, 'packages/conformance-rules/src/example-conformance-rule/index.ts'))).toBe(true);
   const definition = JSON.parse(fs.readFileSync(path.join(root, 'packages/conformance-rules/package.json'), 'utf8')).nx;
-  expect(definition.targets.build.executor).toBe('nx-lint:bundle-rules');
+  expect(definition.targets.build.executor).toBe('@beta_su/nx-lint:bundle-rules');
   expect(Object.keys(definition.targets)).not.toContain('publish-conformance-rules');
 }, 90000);
 
@@ -256,7 +256,7 @@ test('the reserved Cloud hooks preserve resolution, scheduling and result callba
   const root = workspace();
   put(root, 'hooks.cjs', [
     "const fs = require('node:fs');",
-    "const {conformanceHandler} = require('nx-lint/conformance-handler');",
+    "const {conformanceHandler} = require('@beta_su/nx-lint/conformance-handler');",
     "const events=[];",
     "conformanceHandler({},false,{",
     "validateConfiguration(config){events.push('validate');if(!config.rules)throw Error('missing');},",
@@ -281,7 +281,7 @@ test.each([
 ])('Cloud interface hooks preserve fix=%s printConfig=%s outputPath=%s lifecycle', (fix, printConfig, outputPath, code, expectedEvents) => {
   const root = workspace();
   put(root, 'matrix.cjs', [
-    "const fs=require('node:fs');const {conformanceHandler}=require('nx-lint/conformance-handler');const events=[];",
+    "const fs=require('node:fs');const {conformanceHandler}=require('@beta_su/nx-lint/conformance-handler');const events=[];",
     'conformanceHandler({printConfig:' + JSON.stringify(printConfig) + '},' + JSON.stringify(fix) + ',{',
     "validateConfiguration(){events.push('validate');},",
     "preRuleResolutionHook:async()=>{events.push('pre');return {outputPath:" + JSON.stringify(outputPath) + ",rules:[{rule:'nx-cloud:memory'}]};},",
@@ -305,7 +305,7 @@ test.each([false, true])('final fixed results reach the usual report sinks with 
   put(root, 'reporters.cjs', `
     const fs = require('node:fs');
     const path = require('node:path');
-    const terminal = require(path.join(path.dirname(require.resolve('nx-lint')), 'terminal-reporter.js'));
+    const terminal = require(path.join(path.dirname(require.resolve('@beta_su/nx-lint')), 'terminal-reporter.js'));
     const events = [];
     let terminalResults;
     let reportedResults;
@@ -316,7 +316,7 @@ test.each([false, true])('final fixed results reach the usual report sinks with 
       terminalResults = result.ruleResults;
       reportToTerminal(result);
     };
-    const { conformanceHandler, validateConfiguration } = require('nx-lint/conformance-handler');
+    const { conformanceHandler, validateConfiguration } = require('@beta_su/nx-lint/conformance-handler');
     const reporters = [
       async ({ ruleResults }) => {
         events.push('first:start');

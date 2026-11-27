@@ -28,7 +28,7 @@ const createNodesV2: CreateNodesV2<LintPluginOptions> = [
             root: ".",
             targets: {
               [targetName]: {
-                executor: "nx-lint:check",
+                executor: "@beta_su/nx-lint:check",
                 cache: false,
                 options: { fix: false },
                 metadata: {
@@ -36,7 +36,7 @@ const createNodesV2: CreateNodesV2<LintPluginOptions> = [
                 },
               },
               [options.fixTargetName ?? "conformance-fix"]: {
-                executor: "nx-lint:check",
+                executor: "@beta_su/nx-lint:check",
                 cache: false,
                 options: { fix: true },
               },

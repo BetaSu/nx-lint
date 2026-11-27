@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 const require = createRequire(import.meta.url);
 const devkit = require('@nx/devkit');
-const { createReadOnlyTree } = require('nx-lint/testing');
+const { createReadOnlyTree } = require('@beta_su/nx-lint/testing');
 const cleanups = [];
 afterEach(() => { while (cleanups.length) cleanups.pop()(); });
 
@@ -14,7 +14,7 @@ test('Nx inference accepts JSONC configuration and package metadata', async () =
   cleanups.push(() => fs.rmSync(root, { recursive: true, force: true }));
   fs.writeFileSync(path.join(root, 'nx.json'), '{\n// valid Nx config\n"conformance": {"rules": []},\n}\n');
   fs.writeFileSync(path.join(root, 'package.json'), '{\n// Nx readJsonFile semantics\n"name": "jsonc-workspace",\n}\n');
-  const [, infer] = require('nx-lint/plugin').createNodesV2;
+  const [, infer] = require('@beta_su/nx-lint/plugin').createNodesV2;
   const [[, result]] = await infer(['nx.json'], {}, { workspaceRoot: root });
   expect(result.projects['.']).toMatchObject({ name: 'jsonc-workspace', targets: { 'conformance-check': { cache: false }, 'conformance-fix': { cache: false } } });
 });
@@ -46,11 +46,11 @@ test('successful nested test workspaces restore INIT_CWD and workspaceRoot in cl
 });
 
 test('public CommonJS and native ESM exports preserve the contract through compiled entries', async () => {
-  const api = require('nx-lint');
-  const imported = await import('nx-lint');
+  const api = require('@beta_su/nx-lint');
+  const imported = await import('@beta_su/nx-lint');
   expect(Object.keys(api).sort()).toEqual(['ReadOnlyConformanceTree', 'WritableConformanceTree', 'createConformanceRule', 'yargsConformanceCheckCommand', 'yargsConformanceCommand'].sort());
   expect(imported.createConformanceRule).toBe(api.createConformanceRule);
-  expect(require('nx-lint/ensure-owners').name).toBe('ensure-owners');
-  expect(typeof require('nx-lint/src/generators/create-rule/create-rule')).toBe('function');
-  expect(require.resolve('nx-lint')).toContain('/dist/src/');
+  expect(require('@beta_su/nx-lint/ensure-owners').name).toBe('ensure-owners');
+  expect(typeof require('@beta_su/nx-lint/src/generators/create-rule/create-rule')).toBe('function');
+  expect(require.resolve('@beta_su/nx-lint')).toContain('/dist/src/');
 });

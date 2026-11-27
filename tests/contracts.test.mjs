@@ -1,11 +1,11 @@
 import { afterEach, expect, test } from 'vitest';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-const api = require('nx-lint');
-const testing = require('nx-lint/testing');
-const { conformanceRulesRunner } = require('nx-lint/rules-runner');
-const owners = require('nx-lint/ensure-owners');
-const boundaries = require('nx-lint/enforce-project-boundaries');
+const api = require('@beta_su/nx-lint');
+const testing = require('@beta_su/nx-lint/testing');
+const { conformanceRulesRunner } = require('@beta_su/nx-lint/rules-runner');
+const owners = require('@beta_su/nx-lint/ensure-owners');
+const boundaries = require('@beta_su/nx-lint/enforce-project-boundaries');
 const cleanups = [];
 afterEach(() => { while (cleanups.length) cleanups.pop()(); });
 async function fixture(nodes = []) {

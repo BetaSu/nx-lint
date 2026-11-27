@@ -1,14 +1,14 @@
-import { createConformanceRule, ReadOnlyConformanceTree, type ConformanceRuleContext, type ConformanceReporter } from 'nx-lint';
-import { resolveRule, type SuccessfulResolveRuleResultData } from 'nx-lint/resolve-rule';
-import { conformanceRulesRunner } from 'nx-lint/rules-runner';
-import { conformanceHandler } from 'nx-lint/conformance-handler';
-import { createReadOnlyTree, createStubbedProjectGraphAndFileMapCache, applyProjectNodesAndFiles, convertToWritable } from 'nx-lint/testing';
-import { createRuleGenerator } from 'nx-lint/src/generators/create-rule/create-rule';
-import bundle from 'nx-lint/src/executors/bundle-rules/executor';
-import type { BundleRulesExecutorSchema } from 'nx-lint/src/executors/bundle-rules/schema.json';
-import type { ConformanceCheckResult, ConformanceCheckUnit } from 'nx-lint/conformance';
-import boundaries from 'nx-lint/enforce-project-boundaries';
-import owners from 'nx-lint/ensure-owners';
+import { createConformanceRule, ReadOnlyConformanceTree, type ConformanceRuleContext, type ConformanceReporter } from '@beta_su/nx-lint';
+import { resolveRule, type SuccessfulResolveRuleResultData } from '@beta_su/nx-lint/resolve-rule';
+import { conformanceRulesRunner } from '@beta_su/nx-lint/rules-runner';
+import { conformanceHandler } from '@beta_su/nx-lint/conformance-handler';
+import { createReadOnlyTree, createStubbedProjectGraphAndFileMapCache, applyProjectNodesAndFiles, convertToWritable } from '@beta_su/nx-lint/testing';
+import { createRuleGenerator } from '@beta_su/nx-lint/src/generators/create-rule/create-rule';
+import bundle from '@beta_su/nx-lint/src/executors/bundle-rules/executor';
+import type { BundleRulesExecutorSchema } from '@beta_su/nx-lint/src/executors/bundle-rules/schema.json';
+import type { ConformanceCheckResult, ConformanceCheckUnit } from '@beta_su/nx-lint/conformance';
+import boundaries from '@beta_su/nx-lint/enforce-project-boundaries';
+import owners from '@beta_su/nx-lint/ensure-owners';
 const rule = createConformanceRule<{ required: string }>({
   name: 'typed', category: 'security', description: 'Typed rule contract',
   implementation: async ({ tree, ruleOptions }) => ({ severity: 'high', details: { violations: tree.exists(ruleOptions.required) ? [] : [{ workspaceViolation: true, message: 'missing' }] } }),

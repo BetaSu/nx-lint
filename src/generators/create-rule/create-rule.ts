@@ -10,7 +10,7 @@ interface RuleGeneratorOptions {
 async function createRuleGenerator(
   tree: Tree,
   options: RuleGeneratorOptions,
-  importSpecifier = "nx-lint",
+  importSpecifier = "@beta_su/nx-lint",
 ): Promise<void> {
   const root = joinPathFragments(options.directory, options.name);
   const definition = [

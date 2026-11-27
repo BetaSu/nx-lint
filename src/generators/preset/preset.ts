@@ -67,7 +67,7 @@ async function preset(tree: Tree): Promise<GeneratorCallback> {
     ...project,
     targets: {
       build: {
-        executor: "nx-lint:bundle-rules",
+        executor: "@beta_su/nx-lint:bundle-rules",
         outputs: ["{options.outputPath}"],
         options: { outputPath: "{projectRoot}/dist" },
       },
