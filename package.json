@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "description": "Independent Nx workspace policy runner with Conformance-compatible interfaces",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BetaSu/nx-lint.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "type": "commonjs",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
