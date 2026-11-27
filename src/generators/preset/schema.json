@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "id": "LocalNxLintPreset",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

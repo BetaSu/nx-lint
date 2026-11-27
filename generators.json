@@ -1,0 +1,14 @@
+{
+  "generators": {
+    "create-rule": {
+      "factory": "./dist/src/generators/create-rule/create-rule.js",
+      "schema": "./dist/src/generators/create-rule/schema.json",
+      "description": "Generate a local workspace rule"
+    },
+    "preset": {
+      "factory": "./dist/src/generators/preset/preset.js",
+      "schema": "./dist/src/generators/preset/schema.json",
+      "description": "Create a workspace containing an example rule"
+    }
+  }
+}

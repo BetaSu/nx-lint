@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "Check workspace rules",
+  "type": "object",
+  "properties": {
+    "fix": {
+      "type": "boolean",
+      "default": false
+    },
+    "printConfig": {
+      "type": "boolean"
+    },
+    "verbose": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

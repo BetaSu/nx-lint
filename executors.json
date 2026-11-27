@@ -1,0 +1,14 @@
+{
+  "executors": {
+    "bundle-rules": {
+      "implementation": "./dist/src/executors/bundle-rules/executor.js",
+      "schema": "./dist/src/executors/bundle-rules/schema.json",
+      "description": "Bundle workspace rules"
+    },
+    "check": {
+      "implementation": "./dist/src/executors/check/executor.js",
+      "schema": "./dist/src/executors/check/schema.json",
+      "description": "Evaluate workspace rules"
+    }
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "repository": "https://github.com/nrwl/nx",
+  "commit": "a62f68d5badab3f9e136a2b37cea19a8463b9bba",
+  "files": [
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/codeblock-language/index.ts",
+      "bytes": 8230,
+      "sha256": "8ee72edc48ba37c2938cb8e7dc574afe9fca607ba461b42a6fb9062266980ae8",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/codeblock-language/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/codeblock-language/schema.json",
+      "bytes": 132,
+      "sha256": "c093573268e7625fd39ae389bab16ff0eba3eaf95c91b87b3e919cb6f3612b5d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/codeblock-language/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/env-vars-documented/index.spec.ts",
+      "bytes": 5281,
+      "sha256": "f6254526a441a6b43c1843f7a582c8ee6cae389ed2c88dea590f552c809325b7",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/env-vars-documented/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/env-vars-documented/index.ts",
+      "bytes": 3705,
+      "sha256": "7852b00951d30bfefceb58513cfab823a1813499dee6495223ed10f67597c779",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/env-vars-documented/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/env-vars-documented/schema.json",
+      "bytes": 376,
+      "sha256": "5082180e7a3bd2e66a5bc43ae749ae91cb34cc98add5250766473a4e538e7a6a",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/env-vars-documented/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/generator-template-assets/index.spec.ts",
+      "bytes": 5147,
+      "sha256": "0c87266769849a81079dd75c6e58a7a5200559cb4a92e128d635c6474ef799ed",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/generator-template-assets/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/generator-template-assets/index.ts",
+      "bytes": 4301,
+      "sha256": "6996d809240b6f81e845b0e3080dd81cfd4c10de562c7059e1bb3c50a7ac9147",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/generator-template-assets/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/generator-template-assets/schema.json",
+      "bytes": 219,
+      "sha256": "345d8662431e4397438adabdca1bb554ff6213a238acd71586da98809ab8a12a",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/generator-template-assets/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/headings-in-tabs/index.spec.ts",
+      "bytes": 2478,
+      "sha256": "46be814e4a0f824d6a8395d60bc09320a236c2e5c66d390e5d7d62c530de83bf",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/headings-in-tabs/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/headings-in-tabs/index.ts",
+      "bytes": 3056,
+      "sha256": "619a592fd122a56203754a75d0f06dc617d0ab427d3c800c2caea9d76ed85fe8",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/headings-in-tabs/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/headings-in-tabs/schema.json",
+      "bytes": 132,
+      "sha256": "c093573268e7625fd39ae389bab16ff0eba3eaf95c91b87b3e919cb6f3612b5d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/headings-in-tabs/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/migration-groups/index.spec.ts",
+      "bytes": 4915,
+      "sha256": "6c5939be7db87a5c509d5249620c867ef05bd64f09fd0fac60ed65cdac4decf6",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/migration-groups/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/migration-groups/index.ts",
+      "bytes": 3704,
+      "sha256": "c64098fed5bb108563a0076c21acbbf5412853b9ac7ffb525f40efbba8108d22",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/migration-groups/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/migration-groups/schema.json",
+      "bytes": 364,
+      "sha256": "870143c9bd46b9e4440bea6eacc78022a53eae8a1262b1455b96a4191b208ab9",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/migration-groups/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/migration-markdown-assets/index.spec.ts",
+      "bytes": 8367,
+      "sha256": "3b384e443d90765e2cc1a1e61c79deb81a794a03b2b430ce09b5e038b4e0ecb5",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/migration-markdown-assets/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/migration-markdown-assets/index.ts",
+      "bytes": 5840,
+      "sha256": "b84f716a99bbc181d85797c18ef05e179562c0414382e09043c64c6ed4dd99f2",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/migration-markdown-assets/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/migration-markdown-assets/schema.json",
+      "bytes": 219,
+      "sha256": "30af2f24dd2f142166f9f3d713388ebc2f5b9ab62728665882698b12e4c9eb64",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/migration-markdown-assets/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/no-ignored-tracked-files/index.ts",
+      "bytes": 2653,
+      "sha256": "371aad0576ee04614dba2710006578de8b2ffc13f19f583665bff9392be5690b",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/no-ignored-tracked-files/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/no-ignored-tracked-files/schema.json",
+      "bytes": 217,
+      "sha256": "f65a06289626eb238f79b55980dd3e1e64dd30dc744530a211842e9882fccc0d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/no-ignored-tracked-files/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/nx-package-group/index.spec.ts",
+      "bytes": 2127,
+      "sha256": "96e8b36507b1b3a067e08de86c05ee97ab329283dea4aa1f6679775c7643e74d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/nx-package-group/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/nx-package-group/index.ts",
+      "bytes": 2470,
+      "sha256": "0cf204115c60a1f78fa458186cf54b79d04ac6f6d31634839517207217cedb58",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/nx-package-group/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/nx-package-group/schema.json",
+      "bytes": 132,
+      "sha256": "c093573268e7625fd39ae389bab16ff0eba3eaf95c91b87b3e919cb6f3612b5d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/nx-package-group/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/project-package-json/index.spec.ts",
+      "bytes": 8735,
+      "sha256": "d73d5e1661024c3afd15a8d2cfa160865670675f5acb9cd0ef163d63ffd2ff4f",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/project-package-json/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/project-package-json/index.ts",
+      "bytes": 3588,
+      "sha256": "9f1e419c720b54767bafb63a7a7130e4af95fa3929eed33ec43a0b379833f1bb",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/project-package-json/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/project-package-json/schema.json",
+      "bytes": 132,
+      "sha256": "c093573268e7625fd39ae389bab16ff0eba3eaf95c91b87b3e919cb6f3612b5d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/project-package-json/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/relative-image-imports/index.ts",
+      "bytes": 5133,
+      "sha256": "29851c44754d16f23766776dc476fd5407a709ee2417517c9b7f7a0a44f2cb82",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/relative-image-imports/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/relative-image-imports/schema.json",
+      "bytes": 132,
+      "sha256": "c093573268e7625fd39ae389bab16ff0eba3eaf95c91b87b3e919cb6f3612b5d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/relative-image-imports/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/types-versions-exports-sync/index.spec.ts",
+      "bytes": 7209,
+      "sha256": "326ab5f3a3c9098943e3bdf347a138fe1a6f3f8aee5dc721f31c8b3ac2396d75",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/types-versions-exports-sync/index.spec.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/types-versions-exports-sync/index.ts",
+      "bytes": 3739,
+      "sha256": "f8ae50a451c10bef56797a6b781f14fed63ec929cde3e06f83e7f933591fe222",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/types-versions-exports-sync/index.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/types-versions-exports-sync/schema.json",
+      "bytes": 132,
+      "sha256": "c093573268e7625fd39ae389bab16ff0eba3eaf95c91b87b3e919cb6f3612b5d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/types-versions-exports-sync/schema.json"
+    },
+    {
+      "path": "tools/workspace-plugin/src/conformance-rules/utils/copied-assets.ts",
+      "bytes": 2114,
+      "sha256": "609da23af578865688c2626490ed60be859212e1124c7c133b68cdd604f61941",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/conformance-rules/utils/copied-assets.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/src/plugins/copy-assets-plugin.ts",
+      "bytes": 5446,
+      "sha256": "add25971caea2cd70ab2b9eca9f85174a7056d1a9385f92e0c9f6eba1c79a5a9",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/src/plugins/copy-assets-plugin.ts"
+    },
+    {
+      "path": "tools/workspace-plugin/project.json",
+      "bytes": 223,
+      "sha256": "f7bad7431d6e7c6ab0cf58647138c228e5638567f0dbd716f8565479cca0e1f9",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/project.json"
+    },
+    {
+      "path": "package.json",
+      "bytes": 13340,
+      "sha256": "c5dfdf1939238c92101ac788776900bfa8617ab099d7a64eaca3f116c63b643b",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/package.json"
+    },
+    {
+      "path": "nx.json",
+      "bytes": 16036,
+      "sha256": "eb5f97c6019cb081f5bfc1bca557e101dfb73b022bece7089ff896b3b05abaf4",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/nx.json"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1093,
+      "sha256": "50bb7bf81374073606d3c3f277762d5222d82c918b2088f3789ed7e5f9f8b496",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/LICENSE"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "bytes": 6954,
+      "sha256": "7a26b856c306bbfee226d3856292e7fc739fea4edab67a1176d31f40bf0b22c2",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/pnpm-workspace.yaml"
+    },
+    {
+      "path": "jest.preset.js",
+      "bytes": 2424,
+      "sha256": "fb4b9bab95939f08842e453221fed5bec5605fc2ffbeb4d00412515d85f611de",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/jest.preset.js"
+    },
+    {
+      "path": "tools/workspace-plugin/jest.config.cts",
+      "bytes": 655,
+      "sha256": "7ec009ac544abc5400c501e56ce2f85ab8c1fba718a92b30299f53511c5d6c5d",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/jest.config.cts"
+    },
+    {
+      "path": "tools/workspace-plugin/tsconfig.json",
+      "bytes": 304,
+      "sha256": "ee5a68576dc69c20d99f5de96c655cc8a4fd1a392b9681d22fe0ad3743665945",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/tsconfig.json"
+    },
+    {
+      "path": "tools/workspace-plugin/tsconfig.lib.json",
+      "bytes": 474,
+      "sha256": "07881f1fecbfa7b71678227658a70cd92c4eb2b2d59a21ab370ed2be232f0538",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/tsconfig.lib.json"
+    },
+    {
+      "path": "tools/workspace-plugin/tsconfig.spec.json",
+      "bytes": 493,
+      "sha256": "42a7aa862e8ad4f2b8d0f40a06bb2539fa6daf53b2ebdabd913d75ce3f11fc75",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tools/workspace-plugin/tsconfig.spec.json"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "bytes": 619,
+      "sha256": "b129ae80161576e089c2e333a2134032d4edcd3379537792a24f51d9122b7eae",
+      "url": "https://raw.githubusercontent.com/nrwl/nx/a62f68d5badab3f9e136a2b37cea19a8463b9bba/tsconfig.base.json"
+    }
+  ],
+  "scope": "Workspace rules from the pinned public Nx revision"
+}

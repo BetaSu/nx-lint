@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "Bundle workspace rules",
+  "type": "object",
+  "properties": {
+    "rulesDirectory": {
+      "type": "string"
+    },
+    "outputPath": {
+      "type": "string"
+    }
+  },
+  "required": ["outputPath"]
+}

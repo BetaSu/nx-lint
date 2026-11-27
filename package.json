@@ -1,0 +1,111 @@
+{
+  "name": "nx-lint",
+  "version": "0.1.0",
+  "description": "Independent Nx workspace policy runner with Conformance-compatible interfaces",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "bin": {
+    "nx-lint": "dist/bin/nx-lint.js",
+    "nx-conformance": "dist/bin/conformance.js",
+    "nx-conformance-check": "dist/bin/conformance-check.js"
+  },
+  "generators": "generators.json",
+  "executors": "executors.json",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./package.json": "./package.json",
+    "./plugin": {
+      "types": "./dist/src/plugin.d.ts",
+      "default": "./dist/src/plugin.js"
+    },
+    "./conformance": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./bin/conformance": {
+      "types": "./dist/bin/conformance.d.ts",
+      "default": "./dist/bin/conformance.js"
+    },
+    "./bin/conformance-check": {
+      "types": "./dist/bin/conformance.d.ts",
+      "default": "./dist/bin/conformance-check.js"
+    },
+    "./rules-runner": {
+      "types": "./dist/src/rules-runner.d.ts",
+      "default": "./dist/src/rules-runner.js"
+    },
+    "./resolve-rule": {
+      "types": "./dist/src/resolve-rule.d.ts",
+      "default": "./dist/src/resolve-rule.js"
+    },
+    "./conformance-handler": {
+      "types": "./dist/src/commands/nx-lint/lint.d.ts",
+      "default": "./dist/src/commands/nx-lint/lint.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "default": "./dist/testing/index.js"
+    },
+    "./src/generators/create-rule/create-rule": {
+      "types": "./dist/src/generators/create-rule/create-rule.d.ts",
+      "default": "./dist/src/generators/create-rule/entry.cjs"
+    },
+    "./src/executors/bundle-rules/executor": {
+      "types": "./dist/src/executors/bundle-rules/executor.d.ts",
+      "default": "./dist/src/executors/bundle-rules/entry.cjs"
+    },
+    "./src/executors/bundle-rules/schema.json": {
+      "types": "./dist/src/executors/bundle-rules/schema.d.ts",
+      "default": "./dist/src/executors/bundle-rules/schema.json"
+    },
+    "./*": {
+      "types": "./dist/src/rules/*/index.d.ts",
+      "default": "./dist/src/rules/*/entry.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "generators.json",
+    "executors.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "./bin/test-infra run nx-lint:test-contracts--p0",
+    "type-check": "./bin/test-infra run nx-lint:type-check",
+    "build": "./bin/test-infra run nx-lint:build",
+    "prepack": "./bin/test-infra run nx-lint:build"
+  },
+  "dependencies": {
+    "ajv": "8.18.0",
+    "esbuild": "0.25.9",
+    "picocolors": "1.1.1",
+    "semver": "7.6.3",
+    "yargs": "17.7.2"
+  },
+  "peerDependencies": {
+    "@nx/devkit": ">=18 <24",
+    "@nx/js": ">=18 <24",
+    "nx": ">=18 <24"
+  },
+  "devDependencies": {
+    "@nx/devkit": "23.3.0",
+    "@nx/js": "23.3.0",
+    "@types/node": "22.20.1",
+    "@types/yargs": "17.0.35",
+    "nx": "23.3.0",
+    "shiki": "4.0.2",
+    "tinyglobby": "0.2.12",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "packageManager": "pnpm@11.15.1"
+}

@@ -1,0 +1,83 @@
+{
+  "name": "nx-lint",
+  "targets": {
+    "test-contracts--p0": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "vitest run tests/contracts.test.mjs tests/workspace.test.mjs --maxWorkers=1 --no-file-parallelism"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "tsc --noEmit -p tsconfig.json"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "prepare-official-rules": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/prepare-official-rules.cjs"
+      }
+    },
+    "test-official-rules--p0": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": [
+        "prepare-official-rules",
+        "build"
+      ],
+      "options": {
+        "command": "vitest run --config vitest.official-rules.config.mjs"
+      }
+    },
+    "test-installed-workspace--p0": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/verify-installed-workspace.cjs"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
+      "options": {
+        "command": "node tools/build.cjs"
+      }
+    },
+    "test-source-structure--p0": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "command": "vitest run tests/source-structure.test.mjs --maxWorkers=1 --no-file-parallelism"
+      }
+    },
+    "test-package--p0": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "command": "vitest run tests/package.test.mjs --maxWorkers=1 --no-file-parallelism"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "id": "LocalNxLintCreateRule",
+  "title": "Create a workspace rule",
+  "type": "object",
+  "cli": "nx",
+  "properties": {
+    "name": {
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Rule name"
+    },
+    "directory": {
+      "type": "string",
+      "x-prompt": "Parent directory"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["consistency", "maintainability", "reliability", "security"],
+      "x-prompt": "Rule category"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": ["name", "directory", "category"],
+  "additionalProperties": false
+}

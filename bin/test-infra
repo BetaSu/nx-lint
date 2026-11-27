@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+export NX_DAEMON=false NX_ISOLATE_PLUGINS=false NX_TUI=false CI=true
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+exec "$root/node_modules/.bin/nx" "$@"
